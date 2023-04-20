@@ -6,7 +6,6 @@
 # Requires: length(arr) == size
 
 # MAIN
-addi sp, sp, 1000
 # Store array values in contiguous memory at mem address 0x0:
 # {1, 5, 3, 4, 10, 22, 2, 3, 44}
  addi a0, x0, 0
@@ -32,20 +31,17 @@ addi sp, sp, 1000
 
 addi a1, x0, 9   # size of 'arr'
 
-jal x1, SEL_SORT
-jal x1, EXIT
+beq x0, x0, SEL_SORT
+beq x0, x0, EXIT
 
 SEL_SORT:
-addi sp, sp, -16
-sd x1, 8(sp)
-sd s0, 0(sp) #s0 represents x8.
-
 addi t0, x0, 0 # i
 addi t1, x0, 0 # j
 addi t2, x0, 0 # min_index
 
 addi s0, a1, 0 # store n.
 addi a1, a1, -1 # a1 is the size of array. n - 1
+
 UNSORTED_ARRAY_BOUNDARY_LOOP:
 beq t0, a1, END_UNSORTED_ARRAY_BOUNDARY_LOOP # (while i < (n-1))
 
@@ -84,11 +80,8 @@ sd t4, 0(t6)      # swap(&arr[min_index], &arr[i])
 
 addi t0, t0, 1   # i = i + 1
 beq x0, x0, UNSORTED_ARRAY_BOUNDARY_LOOP
-END_UNSORTED_ARRAY_BOUNDARY_LOOP: 
 
-ld s0, 0(sp)
-ld ra, 8(sp)
-addi sp, sp, 16
-jalr x0, ra, 0
+END_UNSORTED_ARRAY_BOUNDARY_LOOP: 
+beq x0, x0, EXIT
 
 EXIT:
