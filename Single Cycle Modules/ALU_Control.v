@@ -1,3 +1,5 @@
+`timescale 1ns / 1ps
+
 module ALU_Control
 (
 	input [1:0] ALUOp, 
@@ -5,18 +7,25 @@ module ALU_Control
 	output reg [3:0] Operation
 );
 
-	always @ (ALUOp or Funct)
+	always @ (*)
 	begin
 		case(ALUOp)
-			2'b00: Operation = 4'b0010;
-			2'b01: 
+			2'b00: begin // for ld, sd, addi, slli
+			case(Funct[2:0])
+                3'b000: Operation = 4'b1001; // addi
+                3'b001: Operation = 4'b1111; // slli
+                default: Operation = 4'b0010; 
+            endcase 
+            end
+            
+			2'b01: // BRANCH
 			begin
 			case(Funct[2:0])
 				3'b000: Operation = 4'b0110;
-				3'b100: Operation = 4'b1000;
-			endcase
+				3'b100: Operation = 4'b1000; // blt
+			endcase end
 
-			2'b10:
+			2'b10: // R-FORMAT
 			begin 
 			case(Funct)
 				4'b0000: Operation = 4'b0010;
