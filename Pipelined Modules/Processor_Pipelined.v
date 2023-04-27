@@ -56,7 +56,7 @@ wire [63:0] Result; wire ZERO;
 
 Mux ALU_MUX(ReadData2_ID_EX_Out, imm_value_ID_EX_Out, ALUSrc, Mux_Out); // Selects rs2 and imm
 ALU_Control aluControl(ALUOp_ID_EX_Out, funct_ID_EX_Out, Operation); // returns operation 
-ALU_64_Bit ALU(ReadData1_ID_EX_Out, Mux_Out, Operation, Result, ZERO); // execute
+ALU_64_bit ALU(ReadData1_ID_EX_Out, Mux_Out, Operation, Result, ZERO); // execute
 Adder branchAdd(PC_ID_EX_Out, imm_value_ID_EX_Out * 2'd2, PC_temp_branch); // calculates branch address
 
 // EX/MEM Pipeline Registers
