@@ -8,25 +8,19 @@ module ALU_64_bit
 	output reg ZERO
 );
 
-localparam [3:0]
-AND = 4'b0000,
-OR	= 4'b0001,
-ADD	= 4'b0010,
-Sub	= 4'b0110,
-NOR = 4'b1100;
 wire BLT = 4'b1000; 
 
-//assign ZERO = (Result == 0);
-
-always @ (ALUOp, a, b)
+always @ (*)
 begin
 	case (ALUOp)
-		AND: Result = a & b;
-		OR:	 Result = a | b;
-		ADD: Result = a + b;
-		Sub: Result = a - b;
-		NOR: Result = ~(a | b);
-		BLT: Result = a < b;
+		4'b0000: Result = a & b; // AND
+		4'b0001: Result = a | b; // OR
+		4'b0010: Result = a + b; // ADD
+		4'b0110: Result = a - b; // SUB
+		4'b1100: Result = ~(a | b); // NOR
+		4'b1000: Result = a < b; // BLT
+		4'b1001: Result =  a + b; // ADDI
+		4'b1111: Result = a * (2'd2**b); // SLLI
 		default: Result = 0;
 	endcase
 	
