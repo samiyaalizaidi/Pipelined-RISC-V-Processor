@@ -13,7 +13,7 @@ module Forwarding_Unit(
     output reg [1:0] ForwardB
     );
     
-    always @ (*)
+    always @ (EX_MEM_RegisterRD || MEM_WB_RegisterRD || EX_MEM_RegWrite || MEM_WB_RegWrite || ID_EX_RegisterRS1 || ID_EX_RegisterRS2)
     begin
         // EX Hazards
         if ((EX_MEM_RegWrite) & (EX_MEM_RegisterRD) & (EX_MEM_RegisterRD == ID_EX_RegisterRS1))
