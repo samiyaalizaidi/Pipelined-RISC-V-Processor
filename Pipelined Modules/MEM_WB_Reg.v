@@ -11,7 +11,7 @@ module MEM_WB_Reg(
     output reg [4:0] RD_S
 );
 
-    always @(negedge clk) 
+    always @(posedge clk) 
     begin
         RegWrite_S = RegWrite;
         MemtoReg_S = MemtoReg;
