@@ -8,7 +8,7 @@ module Instruction_Memory
 	reg [7:0] inst_mem [207:0];
 	
 	initial
-	begin
+	begin 
 		inst_mem[0]=8'h13;
 		inst_mem[1]=8'h05;
 		inst_mem[2]=8'h00;
