@@ -8,7 +8,31 @@ module Instruction_Memory
 	reg [7:0] inst_mem [207:0];
 	
 	initial
-	begin 
+	begin
+//	inst_mem[0] = 8'h40;
+//	inst_mem[1] = 8'h30;
+//	inst_mem[2] = 8'h81;
+//	inst_mem[3] = 8'h33;
+	
+//	inst_mem[4] = 8'h00;
+//	inst_mem[5] = 8'h51;
+//	inst_mem[6] = 8'h76;
+//	inst_mem[7] = 8'h33;
+	
+//	inst_mem[8] = 8'h00;
+//	inst_mem[9] = 8'h23;
+//	inst_mem[10] = 8'h66;
+//	inst_mem[11] = 8'hb3;
+	
+//	inst_mem[12] = 8'h00;
+//	inst_mem[13] = 8'h21;
+//	inst_mem[14] = 8'h07;
+//	inst_mem[15] = 8'h33;
+	
+//	inst_mem[16] = 8'h06;
+//	inst_mem[17] = 8'hf1;
+//	inst_mem[18] = 8'h22;
+//	inst_mem[19] = 8'h23;
 		inst_mem[0]=8'h13;
 		inst_mem[1]=8'h05;
 		inst_mem[2]=8'h00;
